@@ -2,6 +2,8 @@ import * as k8s from '@pulumi/kubernetes'
 import * as pulumi from '@pulumi/pulumi'
 import * as certmanager from '@vizv/crds-cert-manager'
 
+export * from '@vizv/crds-cert-manager'
+
 export interface CertManagerArgs {
   namespaceName: pulumi.Input<string>
   cloudflareApiToken: pulumi.Input<string>
@@ -19,7 +21,7 @@ export class CertManager extends pulumi.ComponentResource {
     args: CertManagerArgs,
     opts?: pulumi.ComponentResourceOptions,
   ) {
-    super('vizv:foundation:CertManager', name, {}, opts)
+    super('vizv:module:CertManager', name, {}, opts)
 
     this.chart = new k8s.helm.v3.Chart(
       name,
